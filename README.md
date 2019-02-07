@@ -1,77 +1,72 @@
-Symfony Standard Edition
+La Boutique Officielle - Pokedex challenge
 ========================
 
-**WARNING**: This distribution does not support Symfony 4. See the
-[Installing & Setting up the Symfony Framework][15] page to find a replacement
-that fits you best.
+# Overview
 
-Welcome to the Symfony Standard Edition - a fully-functional Symfony
-application that you can use as the skeleton for your new applications.
+Thanks for taking time to do this little test. The aim of this technical test is to gauge mostly your approach to writing code.
 
-For details on how to download and get started with Symfony, see the
-[Installation][1] chapter of the Symfony Documentation.
+And, since our clients are asking for a Pokedex feature for a while now, that's seems to be the perfect subject for this test !
 
-What's inside?
---------------
+We are looking for:
+- Clean and concise code
+- Unit tests
+- Highly maintainable code
+- Self documented code
 
-The Symfony Standard Edition is configured with the following defaults:
+# Installation
 
-  * An AppBundle you can use to start coding;
+- Clone the repo
 
-  * Twig as the only configured template engine;
+        $ git clone git@github.com:laboutiqueofficielle/pokedex.git
+- Configure the "parameters.yml" with you database information
+- Create the database
+        
+        $ php bin/console doctrine:database:create
+- Create the tables
 
-  * Doctrine ORM/DBAL;
+        $ php bin/console doctrine:schema:update --force
+        
+# Tasks
 
-  * Swiftmailer;
+## Configuring Asserts
 
-  * Annotations enabled for everything.
+We have a model "Pokemon", but since we do want to have a way to validate our objects, you have to write all needed Asserts on this model
 
-It comes pre-configured with the following bundles:
+## Populating Database
 
-  * **FrameworkBundle** - The core Symfony framework bundle
+A "pokemons.csv" file exist in this repository. The first tasks is to create a Symfony's command to import this data to our database.
 
-  * [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
-    template and routing annotation capability
+The command should be runnable by 
+        
+    php bin/console lbo:pokedex:import --path ./pokemons.csv
+    
+###Constraints
+- Execution ime should be measured and displayed into the console, and logged
+- Monolog must be used to log data (https://symfony.com/doc/3.4/logging.html)
+- If a line contains an error, it should be documented, and import should continue 
+    
+    
+## Creating a Rest API
 
-  * [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
+For this, we recommend that you use this libs (use composer to install it):
+- JMS Serializer: https://github.com/schmittjoh/JMSSerializerBundle
+- FosRestBundle: https://github.com/FriendsOfSymfony/FOSRestBundle
 
-  * [**TwigBundle**][8] - Adds support for the Twig templating engine
+Now that we have data in our DB, we need a way to get this data.
 
-  * [**SecurityBundle**][9] - Adds security by integrating Symfony's security
-    component
+### Get all Pokemon by species ID
 
-  * [**SwiftmailerBundle**][10] - Adds support for Swiftmailer, a library for
-    sending emails
+    GET: http://localhost:8000/pokedex/species/{speciesId}
+This route should return ALL pokemon of the given species, but only the default one.
+To do so, we want you to write a custom DQL
 
-  * [**MonologBundle**][11] - Adds support for Monolog, a logging library
+    POST: http://localhost:8000/pokedex/add
+This route should add a Pokemon into our Database
 
-  * **WebProfilerBundle** (in dev/test env) - Adds profiling functionality and
-    the web debug toolbar
+## Submit your work
 
-  * **SensioDistributionBundle** (in dev/test env) - Adds functionality for
-    configuring and working with Symfony distributions
+We do work as a team, so every piece of code is reviewed by a fellow coder.
 
-  * [**SensioGeneratorBundle**][13] (in dev env) - Adds code generation
-    capabilities
+A Pull Request from your branch to "develop" must be submitted.
 
-  * [**WebServerBundle**][14] (in dev env) - Adds commands for running applications
-    using the PHP built-in web server
-
-  * **DebugBundle** (in dev/test env) - Adds Debug and VarDumper component
-    integration
-
-All libraries and bundles included in the Symfony Standard Edition are
-released under the MIT or BSD license.
-
-Enjoy!
-
-[1]:  https://symfony.com/doc/3.4/setup.html
-[6]:  https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
-[7]:  https://symfony.com/doc/3.4/doctrine.html
-[8]:  https://symfony.com/doc/3.4/templating.html
-[9]:  https://symfony.com/doc/3.4/security.html
-[10]: https://symfony.com/doc/3.4/email.html
-[11]: https://symfony.com/doc/3.4/logging.html
-[13]: https://symfony.com/doc/current/bundles/SensioGeneratorBundle/index.html
-[14]: https://symfony.com/doc/current/setup/built_in_web_server.html
-[15]: https://symfony.com/doc/current/setup.html
+Feel free to use this to explain to us your approach, the problems you encountered or any feedback you want.
