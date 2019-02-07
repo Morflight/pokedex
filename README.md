@@ -13,6 +13,10 @@ We are looking for:
 - Highly maintainable code
 - Self documented code
 
+
+This project should take about 2 hours, but you can take as many time as you need.
+And, we are used to work as a team, so don't be afraid to ask us for help, is you are stuck or just if you don't understand something.
+
 # Installation
 
 - Clone the repo
