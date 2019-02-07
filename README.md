@@ -40,7 +40,7 @@ The command should be runnable by
         
     php bin/console lbo:pokedex:import --path ./pokemons.csv
     
-###Constraints
+### Constraints
 - Execution ime should be measured and displayed into the console, and logged
 - Monolog must be used to log data (https://symfony.com/doc/3.4/logging.html)
 - If a line contains an error, it should be documented, and import should continue 
