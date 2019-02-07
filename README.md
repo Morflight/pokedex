@@ -30,11 +30,15 @@ And, we are used to work as a team, so don't be afraid to ask us for help, is yo
 
         $ php bin/console doctrine:schema:update --force
         
+- If you does not have a WEB server installed, you can use Symfony's one
+    
+        $ php bin/console server:start
+        
 # Tasks
 
 ## Configuring Asserts
 
-We have a model "Pokemon", but since we do want to have a way to validate our objects, you have to write all needed Asserts on this model
+There is a "Pokemon" model, but since we do want to have a way to validate our objects, you have to write all needed Asserts on this model
 
 ## Populating Database
 
@@ -64,9 +68,12 @@ Now that we have data in our DB, we need a way to get this data.
 This route should return ALL pokemon of the given species, but only the default one.
 To do so, we want you to write a custom DQL
 
+This route should return an array of Pokemon objects, in JSON format
+
     POST: http://localhost:8000/pokedex/add
 This route should add a Pokemon into our Database
 
+The input will be in a JSON format
 ## Submit your work
 
 We do work as a team, so every piece of code is reviewed by a fellow coder.
