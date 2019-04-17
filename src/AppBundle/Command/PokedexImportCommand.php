@@ -75,6 +75,8 @@ class PokedexImportCommand extends ContainerAwareCommand
             '',
         ]);
 
+        $start = microtime(true);
+
         $filePath = realpath($this->getContainer()->get('kernel')->getRootDir() . '/../' . $input->getArgument('fileName'));
         if ( ! $filePath) {
             $this->logger->error($this::$errorFileNotFound);
@@ -108,19 +110,22 @@ class PokedexImportCommand extends ContainerAwareCommand
                     $this->pokemonService->save($pokemon);
                     $imported++;
 
-                    $this->logger->info('Success: the line ' . $lineNumber . ' has been successfully imported into the database');
+                    $output->writeln('Success: the line ' . $lineNumber . ' has been successfully imported into the database');
                 } catch (\Exception $e) {
-                    $this->logger->error('Error: the line ' . $lineNumber . ' is invalid, continuing import...');
+                    $this->logger->error('Error: the line ' . $lineNumber . ' is invalid or the pokemon already exists, the entry has been skipped...');
                 }
             }
 
             $lineNumber++;
         }
 
+        $end = microtime(true);
+        $elapsedTime = round(($end - $start) * 100) / 100;
+
         $output->writeln([
             '',
             '',
-            'Import complete: ' . $imported . ' elements have been imported into the database.'
+            'Import complete: ' . $imported . ' elements have been imported into the database in ' . $elapsedTime . 's',
         ]);
     }
 }
