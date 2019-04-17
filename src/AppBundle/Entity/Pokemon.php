@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Pokemon
@@ -68,7 +69,7 @@ class Pokemon
     /**
      * @var float
      *
-     * @ORM\Column(name="wieght", type="float")
+     * @ORM\Column(name="weight", type="float")
      *
      * @Assert\GreaterThanOrEqual(0)
      * @Assert\Type(
@@ -76,7 +77,7 @@ class Pokemon
      *     message="The value {{ value }} is not a valid {{ type }}."
      * )
      */
-    private $wieght;
+    private $weight;
 
     /**
      * @var int
@@ -94,7 +95,7 @@ class Pokemon
     /**
      * @var int
      *
-     * @ORM\Column(name="order", type="integer")
+     * @ORM\Column(name="dex_order", type="integer")
      *
      * @Assert\GreaterThanOrEqual(0)
      * @Assert\Type(
@@ -107,7 +108,7 @@ class Pokemon
     /**
      * @var string
      *
-     * @ORM\Column(name="default", type="string", length=255)
+     * @ORM\Column(name="default_form", type="string", length=255)
      *
      * @Assert\NotBlank
      * @Assert\Type(
@@ -201,27 +202,27 @@ class Pokemon
     }
 
     /**
-     * Set wieght
+     * Set weight
      *
-     * @param float $wieght
+     * @param float $weight
      *
      * @return Pokemon
      */
-    public function setWieght($wieght)
+    public function setWeight($weight)
     {
-        $this->wieght = $wieght;
+        $this->weight = $weight;
 
         return $this;
     }
 
     /**
-     * Get wieght
+     * Get weight
      *
      * @return float
      */
-    public function getWieght()
+    public function getWeight()
     {
-        return $this->wieght;
+        return $this->weight;
     }
 
     /**
