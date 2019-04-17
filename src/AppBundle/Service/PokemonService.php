@@ -4,6 +4,7 @@
 namespace AppBundle\Service;
 
 
+use AppBundle\Entity\Pokemon;
 use Doctrine\ORM\EntityManagerInterface;
 
 class PokemonService
@@ -21,6 +22,9 @@ class PokemonService
         $this->em->flush();
     }
 
-
+    public function findBySpecies($speciesId)
+    {
+        return $this->em->getRepository(Pokemon::class)->findBySpecies($speciesId);
+    }
 
 }
