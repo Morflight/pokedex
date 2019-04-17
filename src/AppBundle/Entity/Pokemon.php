@@ -19,7 +19,6 @@ class Pokemon
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      *
-     * @Assert\NotBlank
      * @Assert\Type(
      *     type="integer",
      *     message="The value {{ value }} is not a valid {{ type }}."
@@ -47,7 +46,7 @@ class Pokemon
      *
      * @Assert\NotBlank
      * @Assert\Type(
-     *     type="string",
+     *     type="integer",
      *     message="The value {{ value }} is not a valid {{ type }}."
      * )
      */
