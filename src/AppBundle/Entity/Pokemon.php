@@ -18,6 +18,12 @@ class Pokemon
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     *
+     * @Assert\NotBlank
+     * @Assert\Type(
+     *     type="integer",
+     *     message="The value {{ value }} is not a valid {{ type }}."
+     * )
      */
     private $id;
 
@@ -25,6 +31,12 @@ class Pokemon
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, unique=true)
+     *
+     * @Assert\NotBlank
+     * @Assert\Type(
+     *     type="string",
+     *     message="The value {{ value }} is not a valid {{ type }}."
+     * )
      */
     private $name;
 
@@ -32,6 +44,12 @@ class Pokemon
      * @var int
      *
      * @ORM\Column(name="species", type="integer")
+     *
+     * @Assert\NotBlank
+     * @Assert\Type(
+     *     type="string",
+     *     message="The value {{ value }} is not a valid {{ type }}."
+     * )
      */
     private $species;
 
@@ -39,6 +57,12 @@ class Pokemon
      * @var float
      *
      * @ORM\Column(name="height", type="float")
+     *
+     * @Assert\GreaterThanOrEqual(0)
+     * @Assert\Type(
+     *     type="float",
+     *     message="The value {{ value }} is not a valid {{ type }}."
+     * )
      */
     private $height;
 
@@ -46,6 +70,12 @@ class Pokemon
      * @var float
      *
      * @ORM\Column(name="wieght", type="float")
+     *
+     * @Assert\GreaterThanOrEqual(0)
+     * @Assert\Type(
+     *     type="float",
+     *     message="The value {{ value }} is not a valid {{ type }}."
+     * )
      */
     private $wieght;
 
@@ -53,6 +83,12 @@ class Pokemon
      * @var int
      *
      * @ORM\Column(name="baseExperience", type="integer")
+     *
+     * @Assert\GreaterThanOrEqual(0)
+     * @Assert\Type(
+     *     type="integer",
+     *     message="The value {{ value }} is not a valid {{ type }}."
+     * )
      */
     private $baseExperience;
 
@@ -60,6 +96,12 @@ class Pokemon
      * @var int
      *
      * @ORM\Column(name="order", type="integer")
+     *
+     * @Assert\GreaterThanOrEqual(0)
+     * @Assert\Type(
+     *     type="integer",
+     *     message="The value {{ value }} is not a valid {{ type }}."
+     * )
      */
     private $order;
 
@@ -67,6 +109,12 @@ class Pokemon
      * @var string
      *
      * @ORM\Column(name="default", type="string", length=255)
+     *
+     * @Assert\NotBlank
+     * @Assert\Type(
+     *     type="boolean",
+     *     message="The value {{ value }} is not a valid {{ type }}."
+     * )
      */
     private $default;
 
