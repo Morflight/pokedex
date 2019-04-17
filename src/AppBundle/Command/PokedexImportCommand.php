@@ -99,7 +99,7 @@ class PokedexImportCommand extends ContainerAwareCommand
                     ->setName($pokemonAsArray[1])
                     ->setSpecies($pokemonAsArray[2])
                     ->setHeight($pokemonAsArray[3])
-                    ->setWieght($pokemonAsArray[4])
+                    ->setWeight($pokemonAsArray[4])
                     ->setBaseExperience($pokemonAsArray[5])
                     ->setOrder($pokemonAsArray[6])
                     ->setDefault(rtrim($pokemonAsArray[7]));
